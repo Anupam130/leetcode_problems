@@ -7,15 +7,9 @@ class Solution{
     public:
     long long findMinDiff(vector<long long> a, long long n, long long m){
         sort(a.begin(),a.end());
-        vector<long long>vec;
-        for(long long i=0;i<m;i++){
-            vec.push_back(a[i]);
-        }
-        long long diff=vec[m-1]-vec[0];
+        long long diff=a[m-1]-a[0];
         for(long long i=m;i<n;i++){
-            vec.erase(vec.begin());
-            vec.push_back(a[i]);
-            if(diff>(vec[m-1]-vec[0])) diff=vec[m-1]-vec[0];
+            if(diff>(a[i]-a[i-m+1])) diff=a[i]-a[i-m+1];
         }
         return diff;
     }   
